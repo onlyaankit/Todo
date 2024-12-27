@@ -46,4 +46,21 @@ export const getAllTodos = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
+};
+
+export const updateTodo = async (req, res) => {
+    try {
+        const todoId = req.params.todoId;
+        const title = req.body;
+        // const todo = await Todo.findById(todoId);
+        await Todo.findByIdAndUpdate(todoId, title, {new:true});
+        await Todo.save;
+        return res.status(200).json({
+            success: true,
+            Todo,
+            message: "todo Updates."
+        });
+    } catch (error) {
+        console.log(error);
+    }
 }
